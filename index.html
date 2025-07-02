@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BustixWorld</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: #1a1a1a;
+            padding: 15px 0;
+            border-bottom: 3px solid #ff6d00;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6d00;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #ff6d00;
+            color: #000;
+        }
+        
+        /* Главный баннер */
+        .main-banner {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://i.pinimg.com/originals/76/de/99/76de99f6895d0dd8ee48173c2d6ca2e8.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .banner-content {
+            z-index: 2;
+        }
+        
+        .project-name {
+            font-size: 72px;
+            font-weight: bold;
+            color: #ff6d00;
+            text-shadow: 3px 3px 6px #000;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .server-info {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+        
+        .server-ip {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: 1px solid #ff6d00;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .server-ip:hover {
+            background-color: rgba(255, 109, 0, 0.3);
+        }
+        
+        .server-version {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: 1px solid #ff6d00;
+            font-size: 16px;
+        }
+        
+        .player-count {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 12px 25px;
+            border-radius: 5px;
+            border: 1px solid #ff6d00;
+            font-size: 18px;
+        }
+        
+        .player-count span {
+            color: #ff6d00;
+            font-weight: bold;
+        }
+        
+        /* Новости */
+        .news-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            color: #ff6d00;
+            border-bottom: 2px solid #ff6d00;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .news-container {
+            height: 300px;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+        
+        .news-item {
+            background-color: #1a1a1a;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff6d00;
+        }
+        
+        .news-date {
+            color: #ff6d00;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        /* Преимущества */
+        .advantages-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .advantage-card {
+            background-color: #1a1a1a;
+            padding: 25px;
+            text-align: center;
+            border-top: 3px solid #ff6d00;
+            transition: transform 0.3s;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .advantage-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        
+        .advantage-title {
+            font-size: 22px;
+            color: #ff6d00;
+            margin-bottom: 10px;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #1a1a1a;
+            padding: 40px 0 30px;
+            border-top: 3px solid #ff6d00;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 24px;
+            margin-left: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #ff6d00;
+        }
+        
+        .copyright {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        /* Скроллбар */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #ff6d00;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff8b33;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://www.dropbox.com/scl/fi/81ifi3q3etwwybv80xpmg/rounded-in-photoretrica-1.png?rlkey=gzlqcboi35ojeysr96s8uhlxj&st=j9phubuv&dl=1" alt="Логотип">
+                <div class="logo-text">BustixWorld</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="https://www.donationalerts.com/r/p78">Донат</a></li>
+                    <li><a href="https:/t.me/supbw_bot">Тех. поддержка</a></li>
+                    <li><a href="https://discord.gg/gqxAamSW">Дискорд</a></li>
+                    <li><a href="https://telegra.ph/pravila-bustixworld-07-02">Правила</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Главный баннер -->
+    <section class="main-banner">
+        <div class="banner-content">
+            <h1 class="project-name">BustixWorld</h1>
+        </div>
+        <div class="server-info">
+            <div class="server-ip" onclick="copyToClipboard('bustixworld.wilm.mc')">IP: bustixworld.wilm.mc</div>
+            <div class="player-count">Игроков онлайн: <span id="online-count">24</span>/<span id="max-players">100</span></div>
+            <div class="server-version">Версия: 1.16.5</div>
+        </div>
+    </section>
+    
+    <!-- Новости -->
+    <section class="news-section">
+        <h2 class="section-title">Новости</h2>
+        <div class="news-container">
+            <div class="news-item">
+                <div class="news-date">02.07.2025</div>
+                <h3 class="news-title">Запуск сервера!</h3>
+                <p>Мы рады сообщить о запуске нашего сервера BustixWorld. Присоединяйтесь к нам и получите бонус за первый вход!</p>
+            </div>
+            <div class="news-item">
+                <div class="news-date">02.07.2025</div>
+                <h3 class="news-title">Новое обновление</h3>
+                <p>Улучшена производительность сервера и добавлены новые функции.</p>
+            </div>
+            <div class="news-item">
+                <div class="news-date">02.07.2025</div>
+                <h3 class="news-title">Мы получили домен</h3>
+                <p>Теперь наш сервер доступен по адресу: bustixworld.wilmc.ru</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Преимущества -->
+    <section class="advantages-section">
+        <h2 class="section-title">Почему именно мы?</h2>
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <img src="https://avatars.mds.yandex.net/i?id=35591c0f28175371917e3b77fe7742a2_l-12150810-images-thumbs&n=13" alt="Высокий аптайм">
+                <h3 class="advantage-title">Высокий аптайм</h3>
+                <p>Наш сервер работает 24/7 с минимальными простоями на обслуживание</p>
+            </div>
+            <div class="advantage-card">
+                <img src="https://avatars.mds.yandex.net/i?id=eed5b3212000ad86f861edf1d050a04d_l-3990263-images-thumbs&n=13" alt="Дружное комьюнити">
+                <h3 class="advantage-title">Дружное комьюнити</h3>
+                <p>У нас дружелюбное сообщество и активные администраторы</p>
+            </div>
+            <div class="advantage-card">
+                <img src="https://i.pinimg.com/originals/ef/6e/18/ef6e188070892f3c0d43b8bafad7d7df.jpg" alt="Уникальные механики">
+                <h3 class="advantage-title">Уникальные механики</h3>
+                <p>Собственные плагины и уникальные игровые механики</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">© 2025 BustixWorld. Все права защищены.</div>
+            <div class="social-links">
+                <a href="#" title="VK"></a>
+                <a href="#" title="Discord">Discord</a>
+                <a href="#" title="YouTube">TikTok</a>
+                <a href="#" title="Telegram">Telegram</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('IP скопирован: ' + text);
+            }, function(err) {
+                console.error('Не удалось скопировать текст: ', err);
+            });
+        }
+
+        // Счетчик игроков (заглушка - в реальности нужно подключение к API сервера)
+        function updatePlayerCount() {
+            // Здесь должен быть запрос к API вашего сервера Minecraft
+            // Для примера используем случайные числа
+            const online = Math.floor(Math.random() * 40) + 13;
+            const max = 2025;
+            
+            document.getElementById('online-count').textContent = online;
+            document.getElementById('max-players').textContent = max;
+        }
+
+        // Обновляем счетчик при загрузке и каждые 30 секунд
+        updatePlayerCount();
+        setInterval(updatePlayerCount, 30000);
+    </script>
+</body>
+</html>
